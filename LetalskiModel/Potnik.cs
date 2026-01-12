@@ -6,21 +6,14 @@ using System.Threading.Tasks;
 
 namespace LetalskiModel
 {
-    public class Potnik
+    public class Potnik : Oseba
     {
-        public string ime, priimek;
-
         public readonly string Potni_list;
-
         public int Prtljaga {  get; set; }
 
-        public string Ime { get; set; }
-        public string Priimek { get; set; }
 
-        public Potnik(string ime, string priimek, string potni_list, int prtljaga)
+        public Potnik(string ime, string priimek, string potni_list, int prtljaga) : base(ime, priimek)
         {
-            Ime = ime;
-            Priimek = priimek;
             Potni_list = potni_list;
             Prtljaga = prtljaga;
         }
@@ -30,9 +23,9 @@ namespace LetalskiModel
             return new Potnik($"{a.Ime} + {b.Ime}", $"{a.Priimek} + {b.Priimek}", $"{a.Potni_list} + {b.Potni_list}", a.Prtljaga + b.Prtljaga);
         }
 
-        public override string ToString()
+        public override string Opis()
         {
-            return $"{Ime} {Priimek}";
+            return $"{Ime} {Priimek}, Potni list: {Potni_list}, Prtljaga: {Prtljaga}";
         }
     }
 }
