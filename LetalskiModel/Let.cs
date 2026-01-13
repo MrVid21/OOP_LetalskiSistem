@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,6 +19,12 @@ namespace LetalskiModel
         private Oseba[] osebe;
         private int stOseb;
 
+        public int StOseb 
+        {
+            get { return stOseb; }
+            
+        }
+
         public Let(string ime_leta, string destinacija, DateTime cas, Letalo letalo)
         {
             Ime_Leta = ime_leta;
@@ -25,7 +32,7 @@ namespace LetalskiModel
             CasOdhoda = cas;
             Letalo = letalo;
 
-            osebe = new Potnik[letalo.Kapaciteta];
+            osebe = new Oseba[letalo.Kapaciteta];
             stOseb = 0;
         }
 
@@ -50,10 +57,6 @@ namespace LetalskiModel
             return seznam;
         }
 
-        public static int operator +(Let a, Let b)
-        {
-            return a.Letalo.Kapaciteta + b.Letalo.Kapaciteta;
-        }
 
         public static bool operator >(Let a, Let b)
         {
@@ -63,6 +66,11 @@ namespace LetalskiModel
         public static bool operator <(Let a, Let b)
         {
             return a.Letalo.Kapaciteta < b.Letalo.Kapaciteta;
+        }
+
+        public override string ToString()
+        {
+            return $"{Ime_Leta}";
         }
     }
 }
