@@ -127,7 +127,8 @@ namespace Seminarska_OOP_1
 
             izbranLet = leti[comboBoxLeti.SelectedIndex];
             OsveziSeznamOseb();
-            
+
+            labelPodatkiLeta.Text = izbranLet.OpisLeta();
         }
 
         private void buttonPrimarjaj_Click(object sender, EventArgs e)

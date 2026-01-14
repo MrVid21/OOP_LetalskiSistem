@@ -33,6 +33,10 @@
             this.textBoxOznakaLeta = new System.Windows.Forms.TextBox();
             this.textBoxDestinacija = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.textBoxSifra = new System.Windows.Forms.TextBox();
+            this.textBoxModel = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.labelStLetal = new System.Windows.Forms.Label();
             this.textBoxKapaciteta = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -61,14 +65,11 @@
             this.label8 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.comboBoxLeti = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.textBoxModel = new System.Windows.Forms.TextBox();
-            this.textBoxSifra = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.buttonPrimarjaj = new System.Windows.Forms.Button();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.labelPodatkiLeta = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -97,14 +98,14 @@
             // 
             // textBoxOznakaLeta
             // 
-            this.textBoxOznakaLeta.Location = new System.Drawing.Point(149, 42);
+            this.textBoxOznakaLeta.Location = new System.Drawing.Point(9, 42);
             this.textBoxOznakaLeta.Name = "textBoxOznakaLeta";
             this.textBoxOznakaLeta.Size = new System.Drawing.Size(116, 20);
             this.textBoxOznakaLeta.TabIndex = 2;
             // 
             // textBoxDestinacija
             // 
-            this.textBoxDestinacija.Location = new System.Drawing.Point(288, 42);
+            this.textBoxDestinacija.Location = new System.Drawing.Point(149, 42);
             this.textBoxDestinacija.Name = "textBoxDestinacija";
             this.textBoxDestinacija.Size = new System.Drawing.Size(116, 20);
             this.textBoxDestinacija.TabIndex = 3;
@@ -130,6 +131,38 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Let";
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(146, 99);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(31, 13);
+            this.label14.TabIndex = 13;
+            this.label14.Text = "Šifra:";
+            // 
+            // textBoxSifra
+            // 
+            this.textBoxSifra.Location = new System.Drawing.Point(149, 115);
+            this.textBoxSifra.Name = "textBoxSifra";
+            this.textBoxSifra.Size = new System.Drawing.Size(116, 20);
+            this.textBoxSifra.TabIndex = 17;
+            // 
+            // textBoxModel
+            // 
+            this.textBoxModel.Location = new System.Drawing.Point(7, 115);
+            this.textBoxModel.Name = "textBoxModel";
+            this.textBoxModel.Size = new System.Drawing.Size(118, 20);
+            this.textBoxModel.TabIndex = 16;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(6, 99);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(67, 13);
+            this.label12.TabIndex = 12;
+            this.label12.Text = "Model letala:";
+            // 
             // labelStLetal
             // 
             this.labelStLetal.AutoSize = true;
@@ -141,7 +174,7 @@
             // 
             // textBoxKapaciteta
             // 
-            this.textBoxKapaciteta.Location = new System.Drawing.Point(9, 42);
+            this.textBoxKapaciteta.Location = new System.Drawing.Point(288, 42);
             this.textBoxKapaciteta.Name = "textBoxKapaciteta";
             this.textBoxKapaciteta.Size = new System.Drawing.Size(116, 20);
             this.textBoxKapaciteta.TabIndex = 5;
@@ -226,9 +259,9 @@
             this.groupBox4.Controls.Add(this.labelVloga);
             this.groupBox4.Controls.Add(this.radioButtonZaposleni);
             this.groupBox4.Controls.Add(this.radioButtonPotnik);
-            this.groupBox4.Location = new System.Drawing.Point(445, 19);
+            this.groupBox4.Location = new System.Drawing.Point(430, 19);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(94, 115);
+            this.groupBox4.Size = new System.Drawing.Size(109, 115);
             this.groupBox4.TabIndex = 11;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Podatki o osebi";
@@ -242,7 +275,7 @@
             "Stevardesa"});
             this.comboBoxVloga.Location = new System.Drawing.Point(10, 82);
             this.comboBoxVloga.Name = "comboBoxVloga";
-            this.comboBoxVloga.Size = new System.Drawing.Size(68, 21);
+            this.comboBoxVloga.Size = new System.Drawing.Size(93, 21);
             this.comboBoxVloga.TabIndex = 14;
             // 
             // labelVloga
@@ -389,38 +422,6 @@
             this.comboBoxLeti.TabIndex = 11;
             this.comboBoxLeti.SelectedIndexChanged += new System.EventHandler(this.comboBoxLeti_SelectedIndexChanged);
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 99);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(67, 13);
-            this.label12.TabIndex = 12;
-            this.label12.Text = "Model letala:";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(146, 99);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(31, 13);
-            this.label14.TabIndex = 13;
-            this.label14.Text = "Šifra:";
-            // 
-            // textBoxModel
-            // 
-            this.textBoxModel.Location = new System.Drawing.Point(7, 115);
-            this.textBoxModel.Name = "textBoxModel";
-            this.textBoxModel.Size = new System.Drawing.Size(118, 20);
-            this.textBoxModel.TabIndex = 16;
-            // 
-            // textBoxSifra
-            // 
-            this.textBoxSifra.Location = new System.Drawing.Point(149, 115);
-            this.textBoxSifra.Name = "textBoxSifra";
-            this.textBoxSifra.Size = new System.Drawing.Size(116, 20);
-            this.textBoxSifra.TabIndex = 17;
-            // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.buttonPrimarjaj);
@@ -433,24 +434,6 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Večja kapaciteta";
             // 
-            // comboBox1
-            // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(6, 35);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(108, 21);
-            this.comboBox1.TabIndex = 0;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(131, 35);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(114, 21);
-            this.comboBox2.TabIndex = 1;
-            // 
             // buttonPrimarjaj
             // 
             this.buttonPrimarjaj.Location = new System.Drawing.Point(63, 62);
@@ -461,11 +444,39 @@
             this.buttonPrimarjaj.UseVisualStyleBackColor = true;
             this.buttonPrimarjaj.Click += new System.EventHandler(this.buttonPrimarjaj_Click);
             // 
+            // comboBox2
+            // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(131, 35);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(114, 21);
+            this.comboBox2.TabIndex = 1;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(6, 35);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(108, 21);
+            this.comboBox1.TabIndex = 0;
+            // 
+            // labelPodatkiLeta
+            // 
+            this.labelPodatkiLeta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelPodatkiLeta.Location = new System.Drawing.Point(12, 356);
+            this.labelPodatkiLeta.Name = "labelPodatkiLeta";
+            this.labelPodatkiLeta.Size = new System.Drawing.Size(351, 32);
+            this.labelPodatkiLeta.TabIndex = 13;
+            this.labelPodatkiLeta.Text = "label9";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(575, 760);
+            this.Controls.Add(this.labelPodatkiLeta);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.comboBoxLeti);
             this.Controls.Add(this.label8);
@@ -534,6 +545,7 @@
         private System.Windows.Forms.Button buttonPrimarjaj;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label labelPodatkiLeta;
     }
 }
 

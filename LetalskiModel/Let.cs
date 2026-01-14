@@ -72,5 +72,12 @@ namespace LetalskiModel
         {
             return $"{Ime_Leta}";
         }
+
+        public string OpisLeta()
+        {
+            return
+                    $"Let : {Ime_Leta} Destinacija: {Destinacija} Odhod: {CasOdhoda} Kapaciteta: {Letalo.Kapaciteta}";
+        }
+        
     }
 }
