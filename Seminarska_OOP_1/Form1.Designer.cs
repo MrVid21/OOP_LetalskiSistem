@@ -469,7 +469,6 @@
             this.labelPodatkiLeta.Name = "labelPodatkiLeta";
             this.labelPodatkiLeta.Size = new System.Drawing.Size(351, 32);
             this.labelPodatkiLeta.TabIndex = 13;
-            this.labelPodatkiLeta.Text = "label9";
             // 
             // Form1
             // 

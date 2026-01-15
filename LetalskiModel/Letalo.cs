@@ -40,6 +40,9 @@ namespace LetalskiModel
             steviloLetal--;
         }
 
-
+        public static int VrniSteviloLetal()
+        {
+            return steviloLetal;
+        }
     }
 }

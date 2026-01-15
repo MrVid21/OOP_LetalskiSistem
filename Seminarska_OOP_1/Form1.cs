@@ -55,7 +55,7 @@ namespace Seminarska_OOP_1
             comboBox2.Items.Add(novLet);
 
             buttonDodajPotnika.Enabled = true;
-            MessageBox.Show("Let uspešno ustvarjen");
+            MessageBox.Show("Let ustvarjen");
             labelStLetal.Text = (Letalo.steviloLetal++).ToString();
         }
 

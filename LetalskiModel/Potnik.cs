@@ -27,5 +27,10 @@ namespace LetalskiModel
         {
             return $"{Ime} {Priimek}, Potni list: {Potni_list}, Prtljaga: {Prtljaga}";
         }
+
+        public static bool JeVeljavenPotniList(string pList)
+        {
+            return pList.Length >= 6;
+        }
     }
 }
