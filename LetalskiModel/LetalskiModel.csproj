@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IIdentifikacija.cs" />
+    <Compile Include="IKapaciteta.cs" />
     <Compile Include="Let.cs" />
     <Compile Include="Letalo.cs" />
     <Compile Include="Oseba.cs" />

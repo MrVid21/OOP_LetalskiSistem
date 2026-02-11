@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LetalskiModel
 {
-    public class Let
+    public class Let : IKapaciteta
     {
 
         public string Ime_Leta {  get; set; }
@@ -78,6 +78,43 @@ namespace LetalskiModel
             return
                     $"Let : {Ime_Leta} Destinacija: {Destinacija} Odhod: {CasOdhoda} Kapaciteta: {Letalo.Kapaciteta}";
         }
+
+
+        public bool ImaProstoMesto()
+        {
+            return stOseb < Letalo.Kapaciteta;
+        }
+
         
+        
+        public int Kapaciteta
+        {
+            get { return Letalo.Kapaciteta; }
+        }
+
+        public int Zasedenost
+        {
+            get { return stOseb; }
+        }
+
+        public Oseba this[int index]
+        {
+            get
+            {
+                if (index < 0 || index >= stOseb)
+                    throw new IndexOutOfRangeException("Neveljaven");
+
+                return osebe[index];
+            }
+
+            set
+            {
+                if (index < 9 || index >= stOseb) throw new IndexOutOfRangeException("Neveljaven indeks");
+
+                if (value == null) throw new ArgumentNullException("je null");
+
+                osebe[index] = value;
+            }
+        }
     }
 }
