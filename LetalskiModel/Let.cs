@@ -36,16 +36,6 @@ namespace LetalskiModel
             stOseb = 0;
         }
 
-        public bool DodajOsebo(Oseba o)
-        {
-            if (stOseb < Letalo.Kapaciteta)
-            {
-                osebe[stOseb] = o;
-                stOseb++;
-                return true;
-            }
-            return false;
-        }
 
         public string[] SeznamOseb()
         {
@@ -115,6 +105,49 @@ namespace LetalskiModel
 
                 osebe[index] = value;
             }
+        }
+
+
+        public delegate bool OsebaFilter(Oseba o);
+
+        public List<Oseba> Filtriraj(OsebaFilter filter)
+        {
+            List<Oseba> rezultat = new List<Oseba>();
+
+            for (int i = 0; i < stOseb; i++)
+            {
+                if (filter(osebe[i]))
+                {
+                    rezultat.Add(osebe[i]);
+                }
+            }
+
+            return rezultat;
+        }
+
+        public delegate void OsebaDodanaHandler(Oseba o);
+        public delegate void LetPolnHandler(string imeLeta);
+
+        public event OsebaDodanaHandler OsebaDodana;
+        public event LetPolnHandler LetPoln;
+
+        public bool DodajOsebo(Oseba o)
+        {
+            if (stOseb < Letalo.Kapaciteta)
+            {
+                osebe[stOseb] = o;
+                stOseb++;
+
+                OsebaDodana?.Invoke(o);
+
+                if (stOseb == Letalo.Kapaciteta)
+                {
+                    LetPoln?.Invoke(Ime_Leta);
+                }
+
+                return true;
+            }
+            return false;
         }
     }
 }
