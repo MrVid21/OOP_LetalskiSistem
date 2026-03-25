@@ -86,7 +86,17 @@ namespace Seminarska_OOP_1
                     MessageBox.Show("Let je poln.");
                 }
             }
-            
+
+            let.OsebaDodana += (o) =>
+            {
+                Console.WriteLine($"Dodana: {o.Opis()}");
+            };
+
+            let.LetPoln += (ime) =>
+            {
+                Console.WriteLine($"Let {ime} je poln!");
+            };
+
         }
 
         private void radioButtonZaposleni_CheckedChanged(object sender, EventArgs e)
@@ -154,5 +164,7 @@ namespace Seminarska_OOP_1
                 MessageBox.Show("Oba leta imata enako kapaciteto.");
             }
         }
+
+
     }
 }

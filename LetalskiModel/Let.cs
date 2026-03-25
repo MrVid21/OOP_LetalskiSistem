@@ -138,11 +138,17 @@ namespace LetalskiModel
                 osebe[stOseb] = o;
                 stOseb++;
 
-                OsebaDodana?.Invoke(o);
+                if (OsebaDodana != null)
+                {
+                    OsebaDodana(o);
+                }
 
                 if (stOseb == Letalo.Kapaciteta)
                 {
-                    LetPoln?.Invoke(Ime_Leta);
+                    if (LetPoln != null)
+                    {
+                        LetPoln(Ime_Leta);
+                    }
                 }
 
                 return true;
