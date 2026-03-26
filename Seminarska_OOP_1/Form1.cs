@@ -12,7 +12,7 @@ using System.Drawing.Text;
 
 namespace Seminarska_OOP_1
 {
-    
+
 
     public partial class Form1 : Form
     {
@@ -41,9 +41,22 @@ namespace Seminarska_OOP_1
 
         private void buttonUstvariLet_Click(object sender, EventArgs e)
         {
+
+
             Letalo letalo = new Letalo(textBoxModel.Text, textBoxSifra.Text, int.Parse(textBoxKapaciteta.Text));
 
             Let novLet = new Let(textBoxOznakaLeta.Text, textBoxDestinacija.Text, DateTime.Now, letalo);
+
+            novLet.OsebaDodana += (o) =>
+            {
+                MessageBox.Show($"Dodana oseba: {o.Opis()}");
+            };
+
+            novLet.LetPoln += (ime) =>
+            {
+                MessageBox.Show($"Let {ime} je POLN!");
+            };
+
 
             leti[steviloLetov] = novLet;
             steviloLetov++;
@@ -51,51 +64,62 @@ namespace Seminarska_OOP_1
             comboBoxLeti.Items.Add(novLet);
             comboBoxLeti.SelectedIndex = comboBoxLeti.Items.Count - 1;
 
+
+
             comboBox1.Items.Add(novLet);
             comboBox2.Items.Add(novLet);
 
             buttonDodajPotnika.Enabled = true;
+
+            labelStLetal.Text = Letalo.VrniSteviloLetal().ToString();
             MessageBox.Show("Let ustvarjen");
-            labelStLetal.Text = (Letalo.steviloLetal++).ToString();
         }
 
         private void buttonDodajPotnika_Click(object sender, EventArgs e)
         {
+            if (izbranLet == null)
+            {
+                MessageBox.Show("Izberi let!");
+                return;
+            }
+
             Oseba novaOseba = null;
 
             if (radioButtonPotnik.Checked)
             {
-                novaOseba = new Potnik(textBoxIme.Text, textBoxPriimek.Text, textBoxPotniList.Text, Convert.ToInt32(textBoxPrtljaga.Text));
+                novaOseba = new Potnik(
+                    textBoxIme.Text,
+                    textBoxPriimek.Text,
+                    textBoxPotniList.Text,
+                    Convert.ToInt32(textBoxPrtljaga.Text));
             }
             else if (radioButtonZaposleni.Checked)
             {
-                novaOseba = new Zaposleni(textBoxIme.Text, textBoxPriimek.Text, comboBoxVloga.Text);
+                novaOseba = new Zaposleni(
+                    textBoxIme.Text,
+                    textBoxPriimek.Text,
+                    comboBoxVloga.Text,
+                    Guid.NewGuid().ToString());
+            }
+
+            if (!Potnik.JeVeljavenPotniList(textBoxPotniList.Text))
+            {
+                MessageBox.Show("Neveljaven potni list!");
+                return;
             }
 
             if (novaOseba != null)
             {
                 if (izbranLet.DodajOsebo(novaOseba))
                 {
-                    listBoxPotniki.Items.Clear();
-                    listBoxPotniki.Items.AddRange(izbranLet.SeznamOseb());
-                    
-                    labelStPotnikov.Text = listBoxPotniki.Items.Count.ToString();
+                    OsveziSeznamOseb();
+                    labelStPotnikov.Text = izbranLet.Zasedenost.ToString();
                 }
                 else
                 {
                     MessageBox.Show("Let je poln.");
                 }
             }
-
-            let.OsebaDodana += (o) =>
-            {
-                Console.WriteLine($"Dodana: {o.Opis()}");
-            };
-
-            let.LetPoln += (ime) =>
-            {
-                Console.WriteLine($"Let {ime} je poln!");
-            };
 
         }
 
@@ -132,11 +156,14 @@ namespace Seminarska_OOP_1
 
         private void comboBoxLeti_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBoxLeti.SelectedIndex == -1) 
+            if (comboBoxLeti.SelectedIndex == -1)
                 return;
 
-            izbranLet = leti[comboBoxLeti.SelectedIndex];
+            izbranLet = (Let)comboBoxLeti.SelectedItem;
+
             OsveziSeznamOseb();
+
+            labelStPotnikov.Text = izbranLet.Zasedenost.ToString();
 
             labelPodatkiLeta.Text = izbranLet.OpisLeta();
         }
@@ -165,6 +192,34 @@ namespace Seminarska_OOP_1
             }
         }
 
+        
 
+        private void buttonFiltrirajPotnike_Click_1(object sender, EventArgs e)
+        {
+            if (izbranLet == null) return;
+
+            var potniki = izbranLet.Filtriraj(o => o is Potnik);
+
+            listBoxPotniki.Items.Clear();
+
+            foreach (var p in potniki)
+            {
+                listBoxPotniki.Items.Add(p.Opis());
+            }
+        }
+
+        private void buttonFiltrirajZaposlene_Click_1(object sender, EventArgs e)
+        {
+            if (izbranLet == null) return;
+
+            var zaposleni = izbranLet.Filtriraj(o => o is Zaposleni);
+
+            listBoxPotniki.Items.Clear();
+
+            foreach (var z in zaposleni)
+            {
+                listBoxPotniki.Items.Add(z.Opis());
+            }
+        }
     }
 }

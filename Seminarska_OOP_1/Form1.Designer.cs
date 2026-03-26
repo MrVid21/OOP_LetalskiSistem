@@ -70,6 +70,8 @@
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.labelPodatkiLeta = new System.Windows.Forms.Label();
+            this.buttonFiltrirajZaposlene = new System.Windows.Forms.Button();
+            this.buttonFiltrirajPotnike = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -470,11 +472,33 @@
             this.labelPodatkiLeta.Size = new System.Drawing.Size(351, 32);
             this.labelPodatkiLeta.TabIndex = 13;
             // 
+            // buttonFiltrirajZaposlene
+            // 
+            this.buttonFiltrirajZaposlene.Location = new System.Drawing.Point(588, 436);
+            this.buttonFiltrirajZaposlene.Name = "buttonFiltrirajZaposlene";
+            this.buttonFiltrirajZaposlene.Size = new System.Drawing.Size(151, 37);
+            this.buttonFiltrirajZaposlene.TabIndex = 17;
+            this.buttonFiltrirajZaposlene.Text = "Filtriraj Zaposlene";
+            this.buttonFiltrirajZaposlene.UseVisualStyleBackColor = true;
+            this.buttonFiltrirajZaposlene.Click += new System.EventHandler(this.buttonFiltrirajZaposlene_Click_1);
+            // 
+            // buttonFiltrirajPotnike
+            // 
+            this.buttonFiltrirajPotnike.Location = new System.Drawing.Point(588, 393);
+            this.buttonFiltrirajPotnike.Name = "buttonFiltrirajPotnike";
+            this.buttonFiltrirajPotnike.Size = new System.Drawing.Size(151, 37);
+            this.buttonFiltrirajPotnike.TabIndex = 16;
+            this.buttonFiltrirajPotnike.Text = "Filtriraj Potnike";
+            this.buttonFiltrirajPotnike.UseVisualStyleBackColor = true;
+            this.buttonFiltrirajPotnike.Click += new System.EventHandler(this.buttonFiltrirajPotnike_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(575, 760);
+            this.ClientSize = new System.Drawing.Size(789, 760);
+            this.Controls.Add(this.buttonFiltrirajZaposlene);
+            this.Controls.Add(this.buttonFiltrirajPotnike);
             this.Controls.Add(this.labelPodatkiLeta);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.comboBoxLeti);
@@ -545,6 +569,8 @@
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label labelPodatkiLeta;
+        private System.Windows.Forms.Button buttonFiltrirajZaposlene;
+        private System.Windows.Forms.Button buttonFiltrirajPotnike;
     }
 }
 
