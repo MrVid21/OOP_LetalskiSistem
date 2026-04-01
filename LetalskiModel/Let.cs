@@ -37,6 +37,10 @@ namespace LetalskiModel
         }
 
 
+        /// <summary>
+        /// Vrne seznam opisov vseh oseb na izbranem letu.
+        /// </summary>
+        /// <returns>Polje nizov z opisi oseb.</returns>
         public string[] SeznamOseb()
         {
             string[] seznam = new string[stOseb];
@@ -110,7 +114,13 @@ namespace LetalskiModel
 
         public delegate bool OsebaFilter(Oseba o);
 
+        /// <summary>
+        /// Filtrira osebe na letu glede na podani pogoj.
+        /// </summary>
+        /// <param name="filter">Delegat, ki določa pogoj filtriranja.</param>
+        /// <returns>Vrne seznam oseb, ki ustrezajo pogoju.</returns>
         public List<Oseba> Filtriraj(OsebaFilter filter)
+
         {
             List<Oseba> rezultat = new List<Oseba>();
 
@@ -128,9 +138,25 @@ namespace LetalskiModel
         public delegate void OsebaDodanaHandler(Oseba o);
         public delegate void LetPolnHandler(string imeLeta);
 
+        /// <summary>
+        /// Dogodek se sproži, ko je oseba uspešno dodana na let.
+        /// </summary>
         public event OsebaDodanaHandler OsebaDodana;
+
+        /// <summary>
+        /// Dogodek se sproži, ko let doseže polno kapaciteto.
+        /// </summary>
         public event LetPolnHandler LetPoln;
 
+
+
+        /// <summary>
+        /// Doda osebo na izbrani let.
+        /// Ob uspešnem dodajanju sproži dogodek OsebaDodana.
+        /// Če je po dodajanju let poln, sproži tudi dogodek LetPoln.
+        /// </summary>
+        /// <param name="o">Objekt osebe, ki jo želimo dodati na let.</param>
+        /// <returns>Vrne true, če je bila oseba uspešno dodana, sicer false.</returns>
         public bool DodajOsebo(Oseba o)
         {
             if (stOseb < Letalo.Kapaciteta)

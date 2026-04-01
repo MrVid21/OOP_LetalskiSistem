@@ -39,6 +39,11 @@ namespace Seminarska_OOP_1
 
         }
 
+        /// <summary>
+        /// Ustvari nov let in ga doda v seznam letov v uporabniškem vmesniku.
+        /// </summary>
+        /// <param name="sender">Pošiljatelj dogodka.</param>
+        /// <param name="e">Podatki dogodka.</param>
         private void buttonUstvariLet_Click(object sender, EventArgs e)
         {
 
@@ -75,6 +80,11 @@ namespace Seminarska_OOP_1
             MessageBox.Show("Let ustvarjen");
         }
 
+        /// <summary>
+        /// Doda novo osebo na trenutno izbrani let.
+        /// </summary>
+        /// <param name="sender">Pošiljatelj dogodka.</param>
+        /// <param name="e">Podatki dogodka.</param>
         private void buttonDodajPotnika_Click(object sender, EventArgs e)
         {
             if (izbranLet == null)
@@ -154,6 +164,11 @@ namespace Seminarska_OOP_1
 
         }
 
+        /// <summary>
+        /// Posodobi prikaz podatkov, ko uporabnik izbere drug let.
+        /// </summary>
+        /// <param name="sender">Pošiljatelj dogodka.</param>
+        /// <param name="e">Podatki dogodka.</param>
         private void comboBoxLeti_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBoxLeti.SelectedIndex == -1)
