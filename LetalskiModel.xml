@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LetalskiModel</name>
+    </assembly>
+    <members>
+        <member name="M:LetalskiModel.Let.SeznamOseb">
+            <summary>
+            Vrne seznam opisov vseh oseb na izbranem letu.
+            </summary>
+            <returns>Polje nizov z opisi oseb.</returns>
+        </member>
+        <member name="M:LetalskiModel.Let.Filtriraj(LetalskiModel.Let.OsebaFilter)">
+            <summary>
+            Filtrira osebe na letu glede na podani pogoj.
+            </summary>
+            <param name="filter">Delegat, ki določa pogoj filtriranja.</param>
+            <returns>Vrne seznam oseb, ki ustrezajo pogoju.</returns>
+        </member>
+        <member name="E:LetalskiModel.Let.OsebaDodana">
+            <summary>
+            Dogodek se sproži, ko je oseba uspešno dodana na let.
+            </summary>
+        </member>
+        <member name="E:LetalskiModel.Let.LetPoln">
+            <summary>
+            Dogodek se sproži, ko let doseže polno kapaciteto.
+            </summary>
+        </member>
+        <member name="M:LetalskiModel.Let.DodajOsebo(LetalskiModel.Oseba)">
+            <summary>
+            Doda osebo na izbrani let.
+            Ob uspešnem dodajanju sproži dogodek OsebaDodana.
+            Če je po dodajanju let poln, sproži tudi dogodek LetPoln.
+            </summary>
+            <param name="o">Objekt osebe, ki jo želimo dodati na let.</param>
+            <returns>Vrne true, če je bila oseba uspešno dodana, sicer false.</returns>
+        </member>
+    </members>
+</doc>
