@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Text;
+using System.IO;
 
 namespace Seminarska_OOP_1
 {
@@ -36,8 +37,77 @@ namespace Seminarska_OOP_1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            NaloziPodatke();
         }
+
+        public void ShraniPodatke()
+        {
+            using (StreamWriter sw = new StreamWriter("podatki.txt"))
+            {
+                for (int i = 0; i < steviloLetov; i++)
+                {
+                    Let let = leti[i];
+
+                    sw.WriteLine($"LET|{let.Ime_Leta}|{let.Destinacija}|{let.Kapaciteta}");
+
+                    for (int j = 0; j < let.Zasedenost; j++)
+                    {
+                        if (let[j] is Potnik p)
+                        {
+                            sw.WriteLine($"POTNIK|{p.Ime}|{p.Priimek}|{p.Potni_list}|{p.Prtljaga}");
+                        }
+                        else if (let[j] is Zaposleni z)
+                        {
+                            sw.WriteLine($"ZAPOSLENI|{z.Ime}|{z.Priimek}|{z.Vloga}|{z.Id}");
+                        }
+                    }
+                }
+            }
+        }
+
+        public void NaloziPodatke()
+        {
+            if (!File.Exists("podatki.txt")) return;
+
+            comboBoxLeti.Items.Clear();
+            comboBox1.Items.Clear();
+            comboBox2.Items.Clear();
+            steviloLetov = 0;
+
+            using (StreamReader sr = new StreamReader("podatki.txt"))
+            {
+                Let trenutniLet = null;
+
+                while (!sr.EndOfStream)
+                {
+                    string vrstica = sr.ReadLine();
+                    string[] deli = vrstica.Split('|');
+
+                    if (deli[0] == "LET")
+                    {
+                        Letalo letalo = new Letalo("Model", "X", int.Parse(deli[3]));
+                        trenutniLet = new Let(deli[1], deli[2], DateTime.Now, letalo);
+
+                        leti[steviloLetov++] = trenutniLet;
+                        comboBoxLeti.Items.Add(trenutniLet);
+                        comboBox1.Items.Add(trenutniLet);
+                        comboBox2.Items.Add(trenutniLet);
+                    }
+                    else if (deli[0] == "POTNIK" && trenutniLet != null)
+                    {
+                        trenutniLet.DodajOsebo(
+                            new Potnik(deli[1], deli[2], deli[3], int.Parse(deli[4])));
+                    }
+                    else if (deli[0] == "ZAPOSLENI" && trenutniLet != null)
+                    {
+                        trenutniLet.DodajOsebo(
+                            new Zaposleni(deli[1], deli[2], deli[3], deli[4]));
+                    }
+                }
+            }
+        }
+
+        
 
         /// <summary>
         /// Ustvari nov let in ga doda v seznam letov v uporabniškem vmesniku.
@@ -235,6 +305,30 @@ namespace Seminarska_OOP_1
             {
                 listBoxPotniki.Items.Add(z.Opis());
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ShraniPodatke();
+            MessageBox.Show("Podatki shranjeni!");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            NaloziPodatke();
+
+            if (steviloLetov > 0)
+            {
+                comboBoxLeti.SelectedIndex = 0;
+            }
+
+            OsveziSeznamOseb();
+            MessageBox.Show("Podatki naloženi!");
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            ShraniPodatke();
         }
     }
 }

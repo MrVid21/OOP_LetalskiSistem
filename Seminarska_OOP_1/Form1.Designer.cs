@@ -72,6 +72,8 @@
             this.labelPodatkiLeta = new System.Windows.Forms.Label();
             this.buttonFiltrirajZaposlene = new System.Windows.Forms.Button();
             this.buttonFiltrirajPotnike = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -492,11 +494,33 @@
             this.buttonFiltrirajPotnike.UseVisualStyleBackColor = true;
             this.buttonFiltrirajPotnike.Click += new System.EventHandler(this.buttonFiltrirajPotnike_Click_1);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(588, 25);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(151, 23);
+            this.button1.TabIndex = 18;
+            this.button1.Text = "Shrani";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(588, 61);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(151, 23);
+            this.button2.TabIndex = 19;
+            this.button2.Text = "Naloži";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(789, 760);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonFiltrirajZaposlene);
             this.Controls.Add(this.buttonFiltrirajPotnike);
             this.Controls.Add(this.labelPodatkiLeta);
@@ -571,6 +595,8 @@
         private System.Windows.Forms.Label labelPodatkiLeta;
         private System.Windows.Forms.Button buttonFiltrirajZaposlene;
         private System.Windows.Forms.Button buttonFiltrirajPotnike;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
 
